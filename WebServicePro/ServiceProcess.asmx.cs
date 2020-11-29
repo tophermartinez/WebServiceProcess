@@ -16,28 +16,25 @@ namespace WebServicePro
     [System.ComponentModel.ToolboxItem(false)]
     // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
     // [System.Web.Script.Services.ScriptService]
-    public class ServiceProcess : Conexion//System.Web.Services.WebService
+    public class ServiceProcess : System.Web.Services.WebService
     {
-        public class Cone : Conexion
-        {
-            // Cone cn = new Cone();
-            
-            //cn = con;
-            // return con;
+        ModelProcess.Conexion con = new Conexion();
 
-        }
+        //string str = con.Conexion1();
 
-            [WebMethod]
+        [WebMethod]
             public string HelloWorld()
             {
                 return "Hola a todos";
             }
 
+
+            
+
+
             [WebMethod]
             public string Login(string usu, string pass) //( USUARIO dto)
             {
-
-          
                 // var strOracle = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=prtfl.chcqocx7scvr.sa-east-1.rds.amazonaws.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=prtfl)));User Id=admin;Password=portafolio123;"
 
                 // Boolean result = false;
@@ -52,7 +49,7 @@ namespace WebServicePro
                 
                
 
-                using (OracleConnection cn = new OracleConnection(strOracle))
+                using (OracleConnection cn = new OracleConnection(con.Conexion1()))
                     {
                         cn.Open();
 
@@ -116,7 +113,7 @@ namespace WebServicePro
             DashboardGen uni;
             try
             {
-                using (OracleConnection cn = new OracleConnection(strOracle))
+                using (OracleConnection cn = new OracleConnection(con.Conexion1()))
                 {
                     cn.Open();
                     using (OracleCommand cmd = new OracleCommand("SP_DASHBOARD_GENERICO", cn))

@@ -10,9 +10,19 @@ namespace ModelProcess
     public class Conexion
     {
         protected string strOracle = string.Empty;
-        public Conexion()
+        public string Conexion1()
         {
             strOracle = ConfigurationManager.ConnectionStrings["OraConexAmazon"].ConnectionString;
+
+            return strOracle;
         }
+
+        //public string Conectar()
+        //{
+        //   string cnn = strOracle;
+
+        //     return cnn;
+        //}
+
     }
 }
